@@ -30,7 +30,7 @@ st.set_page_config(layout="wide", page_title="SF Police Crime Dashboard", page_i
 # LOAD DATA ONCE
 @st.cache_resource
 def load_data():
-    path = "data4.csv"
+    path = "data.csv.gz"
     if not os.path.isfile(path):
         path = f"https://raw.githubusercontent.com/AdanRuiz/StreamLitDemo/main/{path}"
 
