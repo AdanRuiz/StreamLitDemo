@@ -24,7 +24,7 @@ import pydeck as pdk
 import streamlit as st
 
 # SETTING PAGE CONFIG TO WIDE MODE AND ADDING A TITLE AND FAVICON
-st.set_page_config(layout="wide", page_title="NYC Ridesharing Demo", page_icon=":taxi:")
+st.set_page_config(layout="wide", page_title="SF Police Crime Dashboard", page_icon=":taxi:")
 
 
 # LOAD DATA ONCE
@@ -32,7 +32,7 @@ st.set_page_config(layout="wide", page_title="NYC Ridesharing Demo", page_icon="
 def load_data():
     path = "data4.csv"
     if not os.path.isfile(path):
-        path = f"C:\\tmp\\ai_3002\\{path}"
+        path = f"https://raw.githubusercontent.com/AdanRuiz/StreamLitDemo/main/{path}"
 
     data = pd.read_csv(
         path,
@@ -164,17 +164,6 @@ with row2_1:
     )
     map(filterdata(data, hour_selected), midpoint[0], midpoint[1], 11)
 
-with row2_2:
-    st.write("**La Guardia Airport**")
-    map(filterdata(data, hour_selected), la_guardia[0], la_guardia[1], zoom_level)
-
-with row2_3:
-    st.write("**JFK Airport**")
-    map(filterdata(data, hour_selected), jfk[0], jfk[1], zoom_level)
-
-with row2_4:
-    st.write("**Newark Airport**")
-    map(filterdata(data, hour_selected), newark[0], newark[1], zoom_level)
 
 # CALCULATING DATA FOR THE HISTOGRAM
 chart_data = histdata(data, hour_selected)
